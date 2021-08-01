@@ -1,7 +1,7 @@
 ---
 title: "covid 19"
-author: "Dr K"
-date: "5/2/2020"
+author: "iboni archie"
+date: "summer 2021"
 output:
   html_document: default
   pdf_document: default
@@ -24,7 +24,8 @@ state of a patient must be died or alive - we adjust that as well
   
 # Question 1 - Is dying independent of sex
 
-
+$H_0$: Covid 19 deaths in Korea,Jan-May 2020 are unrelated to sex
+$H_A$: There is a relation between deaths in Korea Jan-May 2020 and sex of the patient 
 
 
 Table of patients:
@@ -38,9 +39,19 @@ with(kRdata, table(Sex, result))
 
 ## We create two bar charts - one based on frequency and the other on percent, use ggplot commands to do this
 
-`
+````{r}
+barchartGC(~Sex + result,data=kRdata)
+barchartGC(~Sex + result,data=KRdata, type="percent")
+
+```
 
   
+
+
+
+
+
+
 
 
 
