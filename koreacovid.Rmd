@@ -39,6 +39,13 @@ with(kRdata, table(Sex, result))
 
 ```
 
+The results to this table shows us that the relationship to sex to covid deaths
+in korea is that there is more males dying than females.   
+
+
+
+
+
 ## We create two bar charts - one based on frequency and the other on percent, use ggplot commands to do this
 
 
@@ -58,7 +65,10 @@ basicCC <- ggplot(dd2,aes(x=Sex,y=prcnt*100,fill=result))
 basicCC + geom_bar(stat="identity", position = "dodge")
 ```  
 
-It appears that the barplott is showing us that males are dying at a higher rate than females.  
+It appears that the barplott is showing us that males are dying at a higher  
+rate than females. Males are are dying at a rate of 65 % comapared to women   
+who are dying at a 37% rate. Shows that there is some realtionship to sex to   covid   
+deaths.  
 
 
 
@@ -69,7 +79,7 @@ table1 <- xtabs(~result + Sex, data=kRdata)
 rowPerc(table1)
 colPerc(table1)
 ```
-
+The numerical results show that the females are dying at 36% compared to males who are dying at a 64% rate. Women have a 1.4 % rate of dying compared to male who are at 3%.
 
 ## Inferential results 
 
