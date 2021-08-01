@@ -30,6 +30,8 @@ $H_A$: There is a relation between deaths in Korea Jan-May 2020 and sex of the p
 
 Table of patients:
 ```{r}
+kRdata$Sex = as.factor(kRdata$Sex)
+kRdata$result = as.factor(kRdata$result)
 
 # cross tabulation, patient state by gender
 
@@ -39,13 +41,22 @@ with(kRdata, table(Sex, result))
 
 ## We create two bar charts - one based on frequency and the other on percent, use ggplot commands to do this
 
-````{r}
-barchartGC(~Sex + result,data=kRdata)
-barchartGC(~Sex + result,data=KRdata, type="percent")
 
-```
 
-  
+```{r}
+dd2 <- kRdata %>% group_by(result,Sex) %>% summarize(count=n()) %>% mutate(prcnt=count/sum(count))
+
+
+# the group_by followed by summarize(count=n())
+
+basicC <- ggplot(dd2,aes(x=Sex,y=count,fill=result))
+basicC + geom_bar(stat="identity",position="dodge")
+
+#Now for percentage plot
+
+basicCC <- ggplot(dd2,aes(x=Sex,y=prcnt*100,fill=result)) 
+basicCC + geom_bar(stat="identity", position = "dodge")
+```  
 
 
 
